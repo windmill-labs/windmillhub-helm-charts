@@ -1,4 +1,5 @@
 postgresql:
   enabled: true
 
-licenseKey: LICENSE_KEY
+hub:
+  licenseKey: LICENSE_KEY
