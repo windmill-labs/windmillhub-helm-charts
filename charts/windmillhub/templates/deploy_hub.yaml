@@ -42,7 +42,15 @@ spec:
             path: /ready
             port: 3000
         env:
-
+        {{- with .Values.hub.extraEnv }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+        - name: "DATABASE_URL"
+          value: {{ .Values.hub.databaseUrl }}
+        - name: "BASE_URL"
+          value: {{ .Values.hub.baseUrl }}
+        - name: "LICENSE_KEY"
+          value: {{ .Values.hub.licenseKey }}
         ports:
         - containerPort: 3000
         resources:

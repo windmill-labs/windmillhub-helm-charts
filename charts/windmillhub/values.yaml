@@ -2,8 +2,10 @@ hub:
   databaseUrl: postgres://postgres:windmill@windmillhub-postgresql/windmill?sslmode=disable
   baseUrl: https://hub.windmill.dev/
   imageName: ghcr.io/windmill-labs/windmillhub-ee-public:main
+  licenseKey: "LICENSE_KEY"
   sslIngress: false
   certArn: arn:aws:acm:us-east-1::myarn
+  extraEnv: []
   affinity: {}
 
 postgresql:
