@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: windmill-hub-ingress
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/group.name: windmill
+    alb.ingress.kubernetes.io/target-group-attributes: stickiness.enabled=true,stickiness.lb_cookie.duration_seconds=600
+    alb.ingress.kubernetes.io/load-balancer-attributes: idle_timeout.timeout_seconds=600
+    {{ if .Values.hub.sslIngress }}
+    alb.ingress.kubernetes.io/certificate-arn: {{ .Values.hub.certArn}}
+    {{ end }}
+    alb.ingress.kubernetes.io/group.order: '12'
+spec:
+  ingressClassName: alb
+  rules:
+    - host:  hub.windmill.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: windmill-hub
+                port:
+                  number: 3000

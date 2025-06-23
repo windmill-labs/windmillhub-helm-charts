@@ -1,0 +1,77 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hub
+# prettier-ignore
+spec:
+  replicas: 2
+  revisionHistoryLimit: 0
+  strategy: 
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: windmillhub
+  template:
+    metadata:
+      annotations:
+        timestamp: {{ now | quote }}
+      labels: 
+        app: windmillhub
+        container: hub
+    spec:
+      affinity: 
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: eks.amazonaws.com/nodegroup
+                operator: NotIn
+                values:
+                - node-group-1-20230216160309721800000002
+      containers:
+      - name: hub
+        image: {{ .Values.hub.imageName }}
+        imagePullPolicy: Always
+        readinessProbe:
+          initialDelaySeconds: 1
+          periodSeconds: 10
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 5
+          httpGet:
+            host:
+            scheme: HTTP
+            path: /ready
+            port: 3000
+        env:
+
+        ports:
+        - containerPort: 3000
+        resources:
+          limits:
+              cpu: "1000m"
+              memory: "1.5Gi"
+              ephemeral-storage: "1Gi"
+      securityContext:
+        runAsUser: 0
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: windmill-hub
+spec:
+  externalTrafficPolicy: Cluster
+  ports:
+    - port: 3000
+      protocol: TCP
+      targetPort: 3000
+  selector:
+    app: windmillhub
+    container: hub
+  sessionAffinity: ClientIP
+  type: NodePort
+status:
+  loadBalancer: {}
