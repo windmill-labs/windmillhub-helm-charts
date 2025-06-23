@@ -1,0 +1,7 @@
+hub:
+  databaseUrl: postgres://username:password@host:port/database
+  baseUrl: https://hub.windmill.dev/
+  imageName: ghcr.io/windmill-labs/windmillhub-ee-public:main
+  sslIngress: false
+  certArn: arn:aws:acm:us-east-1::myarn
+  affinity: {}
