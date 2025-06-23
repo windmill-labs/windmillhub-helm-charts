@@ -1,2 +1,4 @@
 postgresql:
   enabled: true
+
+licenseKey: LICENSE_KEY
