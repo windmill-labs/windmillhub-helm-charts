@@ -1,5 +1,5 @@
 hub:
-  databaseUrl: postgres://postgres:windmill@windmillhub-postgresql/windmillhub?sslmode=disable
+  databaseUrl: postgres://postgres:windmill@windmill-hub-postgresql/windmillhub?sslmode=disable
   baseUrl: https://hub.windmill.dev/
   imageName: ghcr.io/windmill-labs/windmillhub-ee-public:main
   licenseKey: "LICENSE_KEY"
@@ -10,7 +10,7 @@ hub:
 
 postgresql:
   enabled: false
-  fullnameOverride: windmillhub-postgresql
+  fullnameOverride: windmill-hub-postgresql
   primary:
     persistence:
       enabled: true
