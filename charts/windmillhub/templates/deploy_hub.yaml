@@ -22,7 +22,10 @@ spec:
         app: windmillhub
         container: hub
     spec:
-      affinity: {{ .Values.hub.affinity }}
+    {{- with .Values.windmill.indexer.affinity }}
+      affinity:
+{{ toYaml . | indent 8 }}
+    {{- end }}
       containers:
       - name: hub
         image: {{ .Values.hub.imageName }}
