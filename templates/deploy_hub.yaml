@@ -22,15 +22,7 @@ spec:
         app: windmillhub
         container: hub
     spec:
-      affinity: 
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: eks.amazonaws.com/nodegroup
-                operator: NotIn
-                values:
-                - node-group-1-20230216160309721800000002
+      affinity: {{ .Values.hub.affinity }}
       containers:
       - name: hub
         image: {{ .Values.hub.imageName }}
