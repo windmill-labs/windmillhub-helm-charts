@@ -21,5 +21,7 @@ hub:
   imageName: ghcr.io/windmill-labs/windmillhub-ee-public:main
   sslIngress: true
   certArn: arn:aws:acm:us-east-1::myarn
+  licenseKey: "LICENSE_KEY"
+  extraEnv: []
   affinity: {}
 ```
