@@ -1,9 +1,9 @@
-name: Windmill Chart Release
+name: Windmillhub Chart Release
 
 on:
   push:
     paths:
-      - charts/windmill/Chart.yaml
+      - charts/windmillhub/Chart.yaml
     branches:
       - main
   # Allows you to run this workflow manually from the Actions tab
