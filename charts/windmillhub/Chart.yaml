@@ -3,7 +3,7 @@ name: windmill-hub
 description: Helm chart for deploying the Windmill Hub
 type: application
 maintainers:
-  - name: Windmill Labs, Inc.
+  - name: Windmill Labs
     email: support@windmill.dev
     url: https://windmill.dev
 version: 0.1.2
