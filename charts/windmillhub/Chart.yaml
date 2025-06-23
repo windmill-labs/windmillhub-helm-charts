@@ -9,8 +9,8 @@ maintainers:
 version: 0.1.2
 appVersion: "1.16.0"
 dependencies:
-  - condition: hub-postgresql.enabled
+  - condition: postgresql.enabled
     name: postgresql
-    alias: hub-postgresql
+    alias: postgresql
     repository: https://charts.bitnami.com/bitnami
     version: 12.3.1
