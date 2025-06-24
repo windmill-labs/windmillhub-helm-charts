@@ -47,8 +47,10 @@ spec:
         {{- end }}
         - name: "DATABASE_URL"
           value: {{ .Values.hub.databaseUrl }}
-        - name: "BASE_URL"
-          value: {{ .Values.hub.baseProtocol }}://{{ .Values.hub.baseDomain }}
+        - name: PUBLIC_PRIVATE_HUB
+          value: {{ .Values.hub.privateHub }}
+        - name: PUBLIC_APP_URL
+          value: {{ .Values.hub.appUrl }}
         - name: "LICENSE_KEY"
           value: {{ .Values.hub.licenseKey }}
         ports:
