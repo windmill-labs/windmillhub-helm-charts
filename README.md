@@ -17,7 +17,8 @@ Example values.yaml:
 ```yaml
 hub:
   databaseUrl: postgres://username:password@host:port/database
-  baseDomain: hub.mywindmill.dev
+  imageName: ghcr.io/windmill-labs/windmillhub-ee-public:main
+  appUrl: https://app.mywindmill.dev
   imageName: ghcr.io/windmill-labs/windmillhub-ee-public:main
   sslIngress: true
   certArn: arn:aws:acm:us-east-1::myarn
