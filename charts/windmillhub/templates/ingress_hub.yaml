@@ -16,7 +16,7 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-    - host:  hub.windmill.dev
+    - host:  {{ .Values.hub.baseDomain }}
       http:
         paths:
           - path: /
