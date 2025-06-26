@@ -47,8 +47,10 @@ spec:
         {{- end }}
         - name: "DATABASE_URL"
           value: {{ .Values.hub.databaseUrl }}
+        {{- if ne .Values.hub.privateHub "false" }}
         - name: PUBLIC_PRIVATE_HUB
           value: {{ .Values.hub.privateHub | quote }}
+        {{- end }}
         - name: PUBLIC_APP_URL
           value: {{ .Values.hub.appUrl }}
         - name: "LICENSE_KEY"
