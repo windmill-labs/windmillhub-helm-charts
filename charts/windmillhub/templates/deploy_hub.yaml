@@ -47,7 +47,7 @@ spec:
         {{- end }}
         - name: "DATABASE_URL"
           value: {{ .Values.hub.databaseUrl }}
-        {{- if eq .Values.hub.privateHub "true" }}
+        {{- if .Values.hub.privateHub }}
         - name: PUBLIC_PRIVATE_HUB
           value: "true"
         {{- end }}
