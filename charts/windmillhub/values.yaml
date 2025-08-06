@@ -1,7 +1,7 @@
 hub:
   databaseUrl: postgres://postgres:windmill@windmill-hub-postgresql/windmillhub?sslmode=disable
   appUrl: https://app.mywindmill.dev
-  privateHub: "true"
+  privateHub: true
   imageName: ghcr.io/windmill-labs/windmillhub-ee-public:main
   licenseKey: "LICENSE_KEY"
   sslIngress: false
