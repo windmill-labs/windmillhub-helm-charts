@@ -2,19 +2,15 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: windmill-hub-ingress
+{{- with .Values.annotations }}
   annotations:
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
-    alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/group.name: windmill
-    alb.ingress.kubernetes.io/target-group-attributes: stickiness.enabled=true,stickiness.lb_cookie.duration_seconds=600
-    alb.ingress.kubernetes.io/load-balancer-attributes: idle_timeout.timeout_seconds=600
-    {{ if .Values.hub.sslIngress }}
-    alb.ingress.kubernetes.io/certificate-arn: {{ .Values.hub.certArn}}
-    {{ end }}
-    alb.ingress.kubernetes.io/group.order: '12'
+{{ toYaml . | indent 4 }}
+{{- end }}
+
 spec:
-  ingressClassName: alb
+  {{ if .Values.className }}
+  ingressClassName: "{{ .Values.className }}"
+  {{ end }}
   rules:
     - host:  {{ .Values.hub.baseDomain }}
       http:

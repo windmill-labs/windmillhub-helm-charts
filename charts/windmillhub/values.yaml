@@ -5,8 +5,8 @@ hub:
   image: ghcr.io/windmill-labs/windmillhub-ee-public
   tag: ""
   licenseKey: "LICENSE_KEY"
-  sslIngress: false
-  certArn: arn:aws:acm:us-east-1::myarn
+  annotations: {}
+  className: ""
   extraEnv: []
   affinity: {}
 
