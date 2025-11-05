@@ -8,9 +8,9 @@ metadata:
 {{- end }}
 
 spec:
-{{- if .Values.tls }}
+{{- if .Values.hub.tls }}
   tls:
-  {{- range .Values.tls }}
+  {{- range .Values.hub.tls }}
     - hosts:
       {{- range .hosts }}
         - {{ . | quote }}
