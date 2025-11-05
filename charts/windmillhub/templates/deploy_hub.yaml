@@ -28,7 +28,7 @@ spec:
     {{- end }}
       containers:
       - name: hub
-        image: {{ .Values.hub.imageName }}
+        image: {{ .Values.hub.image }}:{{ default .Chart.AppVersion .Values.hub.tag }}
         imagePullPolicy: Always
         readinessProbe:
           initialDelaySeconds: 1
