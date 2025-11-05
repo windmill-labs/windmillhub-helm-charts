@@ -2,14 +2,14 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: windmill-hub-ingress
-{{- with .Values.annotations }}
+{{- with .Values.hub.annotations }}
   annotations:
 {{ toYaml . | indent 4 }}
 {{- end }}
 
 spec:
-  {{ if .Values.className }}
-  ingressClassName: "{{ .Values.className }}"
+  {{ if .Values.hub.className }}
+  ingressClassName: "{{ .Values.hub.className }}"
   {{ end }}
   rules:
     - host:  {{ .Values.hub.baseDomain }}
