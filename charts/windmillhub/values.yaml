@@ -7,7 +7,7 @@ hub:
   licenseKey: "LICENSE_KEY"
   annotations: {}
   className: ""
-  tls: {}
+  tls: []
   extraEnv: []
   affinity: {}
 
