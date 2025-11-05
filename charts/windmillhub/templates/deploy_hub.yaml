@@ -16,8 +16,6 @@ spec:
       app: windmillhub
   template:
     metadata:
-      annotations:
-        timestamp: {{ now | quote }}
       labels: 
         app: windmillhub
         container: hub
