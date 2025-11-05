@@ -6,6 +6,10 @@ metadata:
   annotations:
 {{ toYaml . | indent 4 }}
 {{- end }}
+{{- with .Values.hub.tls }}
+  tls:
+{{ toYaml . | indent 4 }}
+{{- end }}
 
 spec:
   {{ if .Values.hub.className }}
