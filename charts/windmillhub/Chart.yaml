@@ -6,7 +6,7 @@ maintainers:
   - name: Windmill Labs
     email: support@windmill.dev
     url: https://windmill.dev
-version: 0.1.21
+version: 0.1.22
 appVersion: "1.1.0"
 dependencies:
   - condition: postgresql.enabled
