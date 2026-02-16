@@ -6,7 +6,7 @@ metadata:
 spec:
   replicas: 2
   revisionHistoryLimit: 0
-  strategy: 
+  strategy:
     type: RollingUpdate
     rollingUpdate:
       maxSurge: 1
@@ -16,7 +16,7 @@ spec:
       app: windmillhub
   template:
     metadata:
-      labels: 
+      labels:
         app: windmillhub
         container: hub
     spec:
@@ -57,9 +57,8 @@ spec:
         - containerPort: 3000
         resources:
           limits:
-              cpu: "1000m"
-              memory: "1.5Gi"
-              ephemeral-storage: "1Gi"
+              memory: "2.5Gi"
+              ephemeral-storage: "20Gi"
       securityContext:
         runAsUser: 0
 ---
