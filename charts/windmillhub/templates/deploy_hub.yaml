@@ -53,6 +53,8 @@ spec:
           value: {{ .Values.hub.appUrl }}
         - name: "LICENSE_KEY"
           value: {{ .Values.hub.licenseKey }}
+        - name: "BODY_SIZE_LIMIT"
+          value: "52428800"
         ports:
         - containerPort: 3000
         resources:

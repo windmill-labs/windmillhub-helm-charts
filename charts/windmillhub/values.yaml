@@ -5,7 +5,8 @@ hub:
   image: ghcr.io/windmill-labs/windmillhub-ee-public
   tag: ""
   licenseKey: "LICENSE_KEY"
-  annotations: {}
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
   className: ""
   tls: []
   extraEnv: []
