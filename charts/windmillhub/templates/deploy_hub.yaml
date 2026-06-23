@@ -53,6 +53,20 @@ spec:
           value: {{ .Values.hub.appUrl }}
         - name: "LICENSE_KEY"
           value: {{ .Values.hub.licenseKey }}
+        {{- if .Values.hub.githubDispatchRepo }}
+        - name: GITHUB_DISPATCH_REPO
+          value: {{ .Values.hub.githubDispatchRepo | quote }}
+        {{- end }}
+        {{- if .Values.hub.githubDispatchTokenSecret.name }}
+        - name: GITHUB_DISPATCH_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.hub.githubDispatchTokenSecret.name | quote }}
+              key: {{ .Values.hub.githubDispatchTokenSecret.key | quote }}
+        {{- else if .Values.hub.githubDispatchToken }}
+        - name: GITHUB_DISPATCH_TOKEN
+          value: {{ .Values.hub.githubDispatchToken | quote }}
+        {{- end }}
         ports:
         - containerPort: 3000
         resources:

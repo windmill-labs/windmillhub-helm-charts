@@ -23,6 +23,12 @@ hub:
   sslIngress: true
   certArn: arn:aws:acm:us-east-1::myarn
   licenseKey: "LICENSE_KEY"
+  # Optional: notify a GitHub content repo on script create/approve (drives its review-PR sync)
+  githubDispatchRepo: "owner/content-repo"
+  githubDispatchToken: "github_pat_..." # or use githubDispatchTokenSecret below
+  githubDispatchTokenSecret:
+    name: hub-github-dispatch
+    key: token
   extraEnv: []
   affinity: {}
 ```

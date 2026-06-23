@@ -5,6 +5,12 @@ hub:
   image: ghcr.io/windmill-labs/windmillhub-ee-public
   tag: ""
   licenseKey: "LICENSE_KEY"
+  # Notify a GitHub content repo on script create/approve (drives its review-PR sync); set both to enable.
+  githubDispatchRepo: "" # "owner/repo" of the content repo
+  # githubDispatchToken: "" # inline token, or use the Secret ref below
+  githubDispatchTokenSecret:
+    name: "" # existing Secret holding the token
+    key: ""
   annotations: {}
   className: ""
   tls: []
