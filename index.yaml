@@ -2,6 +2,25 @@ apiVersion: v1
 entries:
   windmill-hub:
   - apiVersion: v2
+    appVersion: 2.15.0
+    created: "2026-09-04T11:08:20.340192863Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.3.1
+    description: Helm chart for deploying the Windmill Hub
+    digest: 4dc9d117e052a0a2b6c0150b176b00c454ff7566c760f9108e251efa951cd106
+    maintainers:
+    - email: support@windmill.dev
+      name: Windmill Labs
+      url: https://windmill.dev
+    name: windmill-hub
+    type: application
+    urls:
+    - https://github.com/windmill-labs/windmillhub-helm-charts/releases/download/windmill-hub-0.1.66/windmill-hub-0.1.66.tgz
+    version: 0.1.66
+  - apiVersion: v2
     appVersion: 2.14.0
     created: "2026-09-02T16:01:01.062028297Z"
     dependencies:
@@ -891,4 +910,4 @@ entries:
     urls:
     - https://github.com/windmill-labs/windmillhub-helm-charts/releases/download/windmill-hub-0.1.2/windmill-hub-0.1.2.tgz
     version: 0.1.2
-generated: "2026-09-02T16:01:01.06299937Z"
+generated: "2026-09-04T11:08:20.340682962Z"
