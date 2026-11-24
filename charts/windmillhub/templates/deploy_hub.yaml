@@ -43,16 +43,32 @@ spec:
         {{- with .Values.hub.extraEnv }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
+        {{- if .Values.hub.databaseUrlSecret.name }}
+        - name: "DATABASE_URL"
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.hub.databaseUrlSecret.name | quote }}
+              key: {{ .Values.hub.databaseUrlSecret.key | quote }}
+        {{- else }}
         - name: "DATABASE_URL"
           value: {{ .Values.hub.databaseUrl }}
+        {{- end }}
         {{- if not .Values.hub.privateHub }}
         - name: PUBLIC_PRIVATE_HUB
           value: "false"
         {{- end }}
         - name: PUBLIC_APP_URL
           value: {{ .Values.hub.appUrl }}
+        {{- if .Values.hub.licenseKeySecret.name }}
+        - name: "LICENSE_KEY"
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.hub.licenseKeySecret.name | quote }}
+              key: {{ .Values.hub.licenseKeySecret.key | quote }}
+        {{- else }}
         - name: "LICENSE_KEY"
           value: {{ .Values.hub.licenseKey }}
+        {{- end }}
         {{- if .Values.hub.githubDispatchRepo }}
         - name: GITHUB_DISPATCH_REPO
           value: {{ .Values.hub.githubDispatchRepo | quote }}

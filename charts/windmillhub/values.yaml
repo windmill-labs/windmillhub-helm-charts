@@ -1,10 +1,19 @@
 hub:
   databaseUrl: postgres://postgres:windmill@windmill-hub-postgresql/windmillhub?sslmode=disable
+  # Read DATABASE_URL from an existing Secret instead of databaseUrl (keeps it out of the
+  # Deployment spec and the helm release); set both to enable.
+  databaseUrlSecret:
+    name: ""
+    key: ""
   appUrl: https://app.mywindmill.dev
   privateHub: true
   image: ghcr.io/windmill-labs/windmillhub-ee-public
   tag: ""
   licenseKey: "LICENSE_KEY"
+  # Read LICENSE_KEY from an existing Secret instead of licenseKey; set both to enable.
+  licenseKeySecret:
+    name: ""
+    key: ""
   # Notify a GitHub content repo on script create/approve (drives its review-PR sync); set both to enable.
   githubDispatchRepo: "" # "owner/repo" of the content repo
   # githubDispatchToken: "" # inline token, or use the Secret ref below
